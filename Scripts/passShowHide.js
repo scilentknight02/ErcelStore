@@ -8,10 +8,10 @@ eyePassword.addEventListener("click", function () {
   if (password.value.trim() !== "") {
     if (password.type === "password") {
       password.type = "text";
-      eyePassword.src = "eye-close.png";
+      eyePassword.src = "./Includes/eye-close.png";
     } else {
       password.type = "password";
-      eyePassword.src = "eye-open.png";
+      eyePassword.src = "./Includes/eye-open.png";
     }
   }
 });
@@ -21,10 +21,10 @@ eyeCpassword.addEventListener("click", function () {
   if (cPassword.value.trim() !== "") {
     if (cPassword.type === "password") {
       cPassword.type = "text";
-      eyeCpassword.src = "eye-close.png";
+      eyeCpassword.src = "./Includes/eye-close.png";
     } else {
       cPassword.type = "password";
-      eyeCpassword.src = "eye-open.png";
+      eyeCpassword.src = "./Includes/eye-open.png";
     }
   }
 });
