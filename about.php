@@ -123,10 +123,26 @@
       <!-- Initialize Swiper -->
       <script>
        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 4,
+        spaceBetween: 40,
         loop: true,
          pagination: {
            el: ".swiper-pagination",
          },
+         breakpoints: {
+          320: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
        });
       </script>
   </body>
