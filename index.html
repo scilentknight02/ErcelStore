@@ -117,6 +117,37 @@
         background-color: #000;
       }
 
+      /* new css */
+
+      /* Wrapper around the input field and eye icon */
+      .password-container {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Style for the input fields */
+      .form-control {
+        padding-right: 40px; /* Add padding to make space for the icon */
+      }
+
+      /* Style for the eye icon */
+      .eye-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      /* Hover effect for eye icon */
+      .eye-icon:hover {
+        transform: translateY(-50%) scale(1.1); /* Slight zoom-in effect */
+        opacity: 0.8;
+      }
+
       @media screen and (max-width: 575px) {
         .availability-form {
           margin-top: 25px;
@@ -391,22 +422,38 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      class="form-control shadow-none"
-                    />
+                    <div class="password-container">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control shadow-none"
+                      />
+                      <img
+                        src="eye-open.png"
+                        id="eyePassword"
+                        alt="eye open"
+                        class="eye-icon"
+                      />
+                    </div>
                     <span id="password_msg"></span>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Confirm Password</label>
-                    <input
-                      type="password"
-                      name="cpassword"
-                      id="cpassword"
-                      class="form-control shadow-none"
-                    />
+                    <div class="password-container">
+                      <input
+                        type="password"
+                        name="cpassword"
+                        id="cpassword"
+                        class="form-control shadow-none"
+                      />
+                      <img
+                        src="eye-open.png"
+                        id="eyeCpassword"
+                        alt="eye open"
+                        class="eye-icon"
+                      />
+                    </div>
                     <span id="cpassword_msg"></span>
                   </div>
                 </div>
@@ -691,8 +738,16 @@
                     <i class="bi bi-apple"> Buy</i>
                   </button></a
                 >
-                <a href="#">
-                  <button type="button" class="btn btn-primary btn-sm mt-2">
+                <a href="cart.html">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm mt-2"
+                    onclick='addToCart({
+    name: "Macbook Pro 14\"",
+    price: 1999,
+    image: "Images/Products-Img/Macbook-Pro.jpg"
+  })'
+                  >
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
                 </a>
@@ -742,8 +797,16 @@
                     <i class="bi bi-apple"> Buy</i>
                   </button></a
                 >
-                <a href="#">
-                  <button type="button" class="btn btn-primary btn-sm mt-2">
+                <a href="cart.html">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm mt-2"
+                    onclick='addToCart({
+    name: "Macbook Pro 14\"",
+    price: 2399,
+    image: "Images/Products-Img/Macbook-Pro.jpg"
+  })'
+                  >
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
                 </a>
@@ -793,7 +856,7 @@
                     <i class="bi bi-apple"> Buy</i>
                   </button></a
                 >
-                <a href="#">
+                <a href="cart.html">
                   <button type="button" class="btn btn-primary btn-sm mt-2">
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
@@ -844,7 +907,7 @@
                     <i class="bi bi-apple"> Buy</i>
                   </button></a
                 >
-                <a href="#">
+                <a href="cart.html">
                   <button type="button" class="btn btn-primary btn-sm mt-2">
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
@@ -895,7 +958,7 @@
                     <i class="bi bi-apple"> Buy</i>
                   </button></a
                 >
-                <a href="#">
+                <a href="cart.html">
                   <button type="button" class="btn btn-primary btn-sm mt-2">
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
@@ -915,7 +978,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5>Macbook Pro 13"</h5>
+              <h5>Macbook Air 13"</h5>
               <h6 class="mb-2">$1,399.00</h6>
               <div class="specifications mb-4 mt-2 fw-light">
                 <ul
@@ -941,12 +1004,19 @@
                 <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
               </div>
               <div class="button d-flex justify-content-between">
-                <a href="#"
-                  ><button type="button" class="btn btn-primary btn-sm mt-2">
-                    <i class="bi bi-apple"> Buy</i>
-                  </button></a
-                >
-                <a href="#">
+                <a href="#"></a>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm mt-2"
+                    onclick='addToCart({
+  name: "Macbook Air 13\"",
+  price: 1399,
+  image: "Images/Products-Img/Macbook-Pro.jpg"
+})'
+                  >
+                    <i class="bi bi-cart-plus"></i> Cart
+                  </button></a>
+                <a href="cart.html">
                   <button type="button" class="btn btn-primary btn-sm mt-2">
                     <i class="bi bi-cart-plus"></i> Cart
                   </button>
@@ -1140,6 +1210,16 @@
           myModal.show();
         }
       };
+    </script>
+    <script src="passShowHide.js"></script>
+    <!-- cart js file -->
+    <script>
+      function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        window.location.href = "cart.html"; // Redirect after adding
+      }
     </script>
   </body>
 </html>
