@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- bootstrap cdn start -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <!-- bootstrap cdn end -->
+
+    <!-- bootstrap icons cdn start -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- bootstrap icons cdn end -->
+    <!-- google fonts start -->
+    <!-- regular 400 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Mediam 500 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- semiBolds -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- merienda 400 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- merienda 700 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google fonts end -->
+
+    <!-- swiperjs cdn start -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- swiperjs cdn end -->
+
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .h-font {
+        font-family: "Merienda", sans-serif;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .custom-bg {
+        background-color: #2ec1ac;
+      }
+
+      .custom-bg:hover {
+        background-color: #279e8c;
+      }
+
+      .availability-form {
+        margin-top: -50px;
+        z-index: 2;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- header start -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top"
+    >
+      <div class="container-fluid">
+        <!-- Left Column - Logo -->
+        <a class="navbar-brand fw-bold fs-3 h-font" href="index.php"
+          >ErcelStore</a
+        >
+
+        <button
+          class="navbar-toggler shadow-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarSupportedContent"
+        >
+          <!-- Center Column - Navigation items -->
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active me-3 text-primary"
+                aria-current="page"
+                href="#"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle me-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Products
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Mobile</a></li>
+                <li><a class="dropdown-item" href="#">Laptop</a></li>
+                <li><a class="dropdown-item" href="#">Tablet</a></li>
+                <li><a class="dropdown-item" href="#">Monitor</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link me-3" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-3" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+
+          <!-- Right Column - Login button -->
+          <div class="d-flex ms-auto mt-3 mt-lg-0">
+            <button
+              type="button"
+              class="btn btn-outline-dark shadow-none me-lg-3 me-3"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+              id="login"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark shadow-none me-lg-3 me-3"
+              data-bs-toggle="modal"
+              data-bs-target="#registrationModal"
+              id="register"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal Login -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="login.php" method="post">
+            <!-- <?php
+                // Display error messages if any
+                if (isset($_GET['error'])) {
+                    echo "<div class='alert alert-danger'>" . htmlspecialchars($_GET['error']) . "</div>";
+                       }
+                       ?> -->
+
+            <div class="modal-header">
+              <h5 class="modal-title d-flex align-items-center">
+                <i class="bi bi-person-circle fs-5 me-2"> User Login</i>
+              </h5>
+              <button
+                type="reset"
+                class="btn-close shadow-none"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control shadow-none"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control shadow-none"
+                  required
+                />
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2 ms-2 me-2"
+              >
+                <button
+                  type="submit"
+                  name="login_btn"
+                  id="login_btn"
+                  class="btn btn-dark shadow-none"
+                >
+                  Login
+                </button>
+                <a
+                  href="javascript: void(0)"
+                  class="text-decoration-none text-primary"
+                  >Forget Password</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Register -->
+    <div
+      class="modal fade"
+      id="registrationModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form
+            action="registration.php"
+            method="post"
+            onsubmit="return form_validate()"
+          >
+            <div class="modal-header">
+              <h5 class="modal-title d-flex align-items-center">
+                <i class="bi bi-person-lines-fill"> User Registration</i>
+              </h5>
+              <button
+                type="reset"
+                class="btn-close shadow-none"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <span class="badge text-bg-light mb-3 text-wrap lh-base"
+                >Note: Your details must match with your ID (Citizenship,
+                Passport, Driving License, etc)
+              </span>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">First Name</label>
+                    <input
+                      type="text"
+                      name="fname"
+                      id="fname"
+                      class="form-control shadow-none"
+                    />
+                    <span id="fname_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input
+                      type="name"
+                      name="lname"
+                      id="lname"
+                      class="form-control shadow-none"
+                    />
+                    <span id="lname_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control shadow-none"
+                    />
+                    <span id="email_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Phone</label>
+                    <input
+                      type="number"
+                      name="phone"
+                      id="phone"
+                      class="form-control shadow-none"
+                    />
+                    <span id="phone_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Gender</label>
+                    <select
+                      class="form-select shadow-none"
+                      name="gender"
+                      id="gender"
+                    >
+                      <option value="" disabled selected>Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                    <span id="gender_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Date_of_Birth</label>
+                    <input
+                      type="date"
+                      name="dob"
+                      id="dob"
+                      class="form-control shadow-none"
+                    />
+                    <span id="dob_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control shadow-none"
+                    />
+                    <span id="password_msg"></span>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input
+                      type="password"
+                      name="cpassword"
+                      id="cpassword"
+                      class="form-control shadow-none"
+                    />
+                    <span id="cpassword_msg"></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2 ms-2 me-2"
+              >
+                <button
+                  type="submit"
+                  name="register_btn"
+                  id="register_btn"
+                  class="btn btn-dark shadow-none"
+                >
+                  Register
+                </button>
+                <span>
+                  Already have an account?
+                  <a
+                    href="javascript: void(0)"
+                    class="text-decoration-none text-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    data-bs-dismiss="modal"
+                    >Login</a
+                  >
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- header end -->
+
+    <!-- main content start -->
+
+    <!-- Carousel start -->
+    <div class="container-fluid">
+      <div class="swiper swiper-container w-50 h-500px">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img1.jpg" class="d-block w-100 h-100" />
+          </div>
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img2.jpg" class="d-block w-100" />
+          </div>
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img3.jpg" class="d-block w-100" />
+          </div>
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img4.jpg" class="d-block w-100" />
+          </div>
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img5.jpg" class="d-block w-100" />
+          </div>
+          <div class="swiper-slide">
+            <img src="Images/Carousel/img6.jpg" class="d-block w-100" />
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <!-- Carousel end -->
+
+    <!-- check availability form start-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 bg-white shadow p-4 rounded">
+          <h5 class="mb-4">Check availability</h5>
+          <form action="">
+            <div class="row align-items-end">
+              <!-- Product Select -->
+              <div class="col-lg-3">
+                <label class="form-label">Select Product</label>
+                <select class="form-select shadow-none" id="selectProduct">
+                  <option value="" disabled selected>Select Item</option>
+                  <option value="macbook">Macbook</option>
+                  <option value="iphone">iPhone</option>
+                  <option value="ipad">iPad</option>
+                  <option value="imac">iMac</option>
+                </select>
+              </div>
+
+              <!-- Modal Select -->
+              <div class="col-lg-3">
+                <label class="form-label">Select Modal</label>
+                <select class="form-select shadow-none" id="selectModal">
+                  <option value="" disabled selected>Select Modal</option>
+                </select>
+              </div>
+
+              <!-- Variant Select -->
+              <div class="col-lg-3">
+                <label class="form-label">Select Variant</label>
+                <select class="form-select shadow-none" id="selectVariant">
+                  <option value="" disabled selected>Select Variant</option>
+                </select>
+              </div>
+
+              <!-- Color Select -->
+              <div class="col-lg-2">
+                <label class="form-label">Select Color</label>
+                <select class="form-select shadow-none" id="selectColor">
+                  <option value="" disabled selected>Select Color</option>
+                </select>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="col-lg-1">
+                <button
+                  type="submit"
+                  name="buy"
+                  class="btn text-white shadow-none custom-bg"
+                >
+                  <a
+                    href="#"
+                    class="text-decoration-none text-black"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    >Buy</a
+                  >
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <script>
+            const selectProduct = document.getElementById("selectProduct");
+            const selectModal = document.getElementById("selectModal");
+            const selectVariant = document.getElementById("selectVariant");
+            const selectColor = document.getElementById("selectColor");
+
+            const modals = {
+              macbook: ["M1 Pro", "M2 Pro", "M3 Pro", "M4 Pro"],
+              iphone: [
+                "iPhone 14 Pro Max",
+                "iPhone 14 Pro",
+                "iPhone 14 Plus",
+                "iPhone 14",
+                "iPhone 15 Pro Max",
+                "iPhone 15 Pro",
+                "iPhone 15 Plus",
+                "iPhone 15",
+                "iPhone 16 Pro Max",
+                "iPhone 16 Pro",
+                "iPhone 16 Plus",
+                "iPhone 16",
+              ],
+              ipad: ["iPad Air", "iPad Pro", "iPad Mini"],
+              imac: ["iMac 24-inch", "iMac 27-inch", "iMac Pro"],
+            };
+
+            const variants = {
+              macbook: [
+                "8/256GB",
+                "8/512GB",
+                "16/256GB",
+                "16/512GB",
+                "16/1TB",
+                "32/512GB",
+                "32/1TB",
+              ],
+              iphone: ["128GB", "256GB", "512GB", "1TB"],
+              ipad: ["128GB", "256GB", "512GB", "1TB"],
+              imac: ["Standard", "Nano-texture Display"],
+            };
+
+            const colors = {
+              macbook: [
+                "Space Gray",
+                "Silver White",
+                "Rose Gold",
+                "Midnight Gray",
+                "Midnight Black",
+              ],
+              iphone: ["Mat Black", "White", "Blue", "Titanium Desert"],
+              ipad: ["Space Gray", "Mat Black"],
+              imac: ["White", "Silver"],
+            };
+
+            selectProduct.addEventListener("change", function () {
+              const selectedProduct = this.value;
+
+              // Clear old options
+              selectModal.innerHTML =
+                '<option value="" disabled selected>Select Modal</option>';
+              selectVariant.innerHTML =
+                '<option value="" disabled selected>Select Variant</option>';
+              selectColor.innerHTML =
+                '<option value="" disabled selected>Select Color</option>';
+
+              // Populate Modal
+              if (modals[selectedProduct]) {
+                modals[selectedProduct].forEach(function (modal) {
+                  const option = document.createElement("option");
+                  option.value = modal.toLowerCase().replace(/\s+/g, "-");
+                  option.textContent = modal;
+                  selectModal.appendChild(option);
+                });
+              }
+
+              // Populate Variant
+              if (variants[selectedProduct]) {
+                variants[selectedProduct].forEach(function (variant) {
+                  const option = document.createElement("option");
+                  option.value = variant.toLowerCase().replace(/\s+/g, "-");
+                  option.textContent = variant;
+                  selectVariant.appendChild(option);
+                });
+              }
+
+              // Populate Color
+              if (colors[selectedProduct]) {
+                colors[selectedProduct].forEach(function (color) {
+                  const option = document.createElement("option");
+                  option.value = color.toLowerCase().replace(/\s+/g, "-");
+                  option.textContent = color;
+                  selectColor.appendChild(option);
+                });
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <!-- check availability form end -->
+
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+    <br /><br /><br />
+
+    <!-- main content end -->
+
+    <!-- footer start -->
+    <footer
+      class="footer footer-expand-lg footer-light bg-white px-lg-3 py-lg-2 shadow-sm"
+    >
+      <div class="py-3 text-center font-bold h5">
+        <ul class="nav justify-content-center border-bottom pb-2 mb-2">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"> Home </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"> Products </a>
+          </li> -->
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-body-secondary"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Products
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Mobile</a></li>
+              <li><a class="dropdown-item" href="#">Laptop</a></li>
+              <li><a class="dropdown-item" href="#">Tablet</a></li>
+              <li><a class="dropdown-item" href="#">Monitor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"> About </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary"> Services </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+        <p class="text-center text-body-secondary">
+          &copy; All Rights Reserved | ErcelStore 2025
+        </p>
+      </div>
+    </footer>
+
+    <!-- footer end -->
+    <!-- bootstrap script cdn start -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap script cdn end -->
+    <!-- swiperjs script cdn start -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- swiperjs script cdn end -->
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        spaceBetween: 30,
+        effect: "fade",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+    <script src="./signUpscript.js"></script>
+
+    <!-- script to find login modal -->
+    <script>
+      window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginModal = urlParams.get("loginModal");
+
+        if (loginModal === "true") {
+          // Trigger your login modal opening
+          // Example if you are using Bootstrap Modal:
+          var myModal = new bootstrap.Modal(
+            document.getElementById("loginModal")
+          );
+          myModal.show();
+        }
+      };
+    </script>
+  </body>
+</html>
