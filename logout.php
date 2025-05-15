@@ -1,5 +1,5 @@
 <?php
-require('Includes/essentials.php');
+require('Includes/frontend_essentials.php');
 
 session_start();
 session_destroy();

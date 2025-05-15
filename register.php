@@ -1,13 +1,5 @@
 <?php
-// require('Includes/dbconfig.php');
-// require('Includes/essentials.php');
-
-// session_start();
-// if((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)){
-//     redirect('customer_dashboard.php');
-// }
 require('Includes/header.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +105,7 @@ require('Includes/header.php');
   <?php
   if (isset($_POST['register'])) {
     // print_r($_POST);
-    $frm_data = filter($_POST);
+    $frm_data = filteration($_POST);
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];

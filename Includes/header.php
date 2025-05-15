@@ -1,12 +1,12 @@
 <?php
-require('dbconfig.php');
-require('essentials.php');
+require('AdminPanel/inc/dbconfig.php');
+require('AdminPanel/inc/essentials.php');
 
-session_start();
-if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
-  redirect('customer_dashboard.php');
-}
+$contact_q = "SELECT * FROM `contact_details` WHERE `sn` = ?";
+$value = [1];
+$contact_r = mysqli_fetch_assoc(select($contact_q, $value, 'i'));
 ?>
+<!-- fetch contact details -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,19 +19,6 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
   require('links.php');
   ?>
   <style>
-    .availability-form {
-      margin-top: -50px;
-      z-index: 2;
-      position: relative;
-    }
-
-    @media screen and (max-width: 575px) {
-      .availability-form {
-        margin-top: 25px;
-        padding: 0 35px;
-      }
-    }
-
     .password-container {
       position: relative;
       width: 100%;
@@ -58,7 +45,6 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
       opacity: 0.8;
     }
 
-    /* Open dropdown on hover */
     .nav-item.dropdown:hover .dropdown-menu {
       display: block;
       margin-top: 0;
@@ -71,7 +57,7 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+  <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <!-- Left: Logo -->
@@ -86,7 +72,7 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
       <!-- Center: Navigation Links -->
       <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active me-3" href="index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link me-3" href="index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link me-3" href="about.php">About</a></li>
           <li class="nav-item"><a class="nav-link me-3" href="facilities.php">Facilities</a></li>
           <li class="nav-item"><a class="nav-link me-3" href="contact.php">Contact Us</a></li>
@@ -125,8 +111,6 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)) {
       const loginModal = urlParams.get("loginModal");
 
       if (loginModal === "true") {
-        // Trigger your login modal opening
-        // Example if you are using Bootstrap Modal:
         var myModal = new bootstrap.Modal(
           document.getElementById("loginModal")
         );

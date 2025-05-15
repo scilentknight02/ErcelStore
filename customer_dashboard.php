@@ -1,5 +1,5 @@
 <?php
-require('Includes/essentials.php');
+require('AdminPanel/inc/essentials.php');
 customerLogin();
 ?>
 <!DOCTYPE html>

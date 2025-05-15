@@ -17,14 +17,23 @@ function filteration($data)
         // stripslashes(); // remove backward slashes
         // htmlspectialchars(); // html special characters convert into html entities
         // strip_tags(); // remove html tags or block to run
-        $data[$key] = trim($value);
-        $data[$key] = stripslashes($value);
-        $data[$key] = htmlspecialchars($value);
-        $data[$key] = strip_tags($value);
+        $value = trim($value);
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = htmlspecialchars($value);
+        $value = strip_tags($value);
+        $data[$key] = $value;
     }
     return $data;
 }
 
+
+function selectAll($table)
+{
+    $con = $GLOBALS['con'];
+    $res = mysqli_query($con, "SELECT * FROM $table");
+    return $res;
+}
 function select($sql, $values, $datatypes)
 {
     // $query = "SELECT * FROM `admin` WHERE `email` = ? AND `password` = ?";
@@ -49,10 +58,6 @@ function select($sql, $values, $datatypes)
 }
 function update($sql, $values, $datatypes)
 {
-    // $query = "SELECT * FROM `admin` WHERE `email` = ? AND `password` = ?";
-    // $values = [$frm_data['email'], $frm_data['password']];
-    // $datatypes = "ss"; // email is string type and password is string type
-    // select($query, $values, $datatypes);
     $con = $GLOBALS['con'];
     if ($stmt = mysqli_prepare($con, $sql)) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
@@ -66,6 +71,44 @@ function update($sql, $values, $datatypes)
         }
     } else {
         die("Query can not be prepared - Update");
+    }
+
+}
+
+function insert($sql, $values, $datatypes)
+{
+    $con = $GLOBALS['con'];
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query can not be executed - Insert");
+        }
+    } else {
+        die("Query can not be prepared - Insert");
+    }
+
+}
+
+function delete($sql, $values, $datatypes)
+{
+    $con = $GLOBALS['con'];
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query can not be executed - Delete");
+        }
+    } else {
+        die("Query can not be prepared - Delete");
     }
 
 }

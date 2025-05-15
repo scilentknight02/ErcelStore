@@ -1,14 +1,13 @@
 <?php
-// require('Includes/dbconfig.php');
-// require('Includes/essentials.php');
+session_start();
+
 require('Includes/header.php');
 
-
-// session_start();
-// if((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] == true)){
-//     redirect('customer_dashboard.php');
-// }
+if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] === true)) {
+  redirect('customer_dashboard.php');
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +43,6 @@ require('Includes/header.php');
         <div class="mb-4">
           <input name="password" type="password" class="form-control shadow-none" placeholder="Password" required />
         </div>
-        <!-- <div class="d-flex justify-content-between align-items-center">
-              <button type="submit" name="login" class="btn text-dark custom-bg shadow-none">Login</button>
-              <a href="forgotpassword.php" class="text-decoration-none">Forgot Password</a>
-              </div> -->
         <p class="d-flex justify-content-between align-items-center ">
           <span><a class="text-decoration-none" href="forgot-password.php">Forget Password</a></span>
           <span><a class="text-decoration-none" href="register.php">Register Now</a></span>
@@ -64,7 +59,7 @@ require('Includes/header.php');
   <?php
   if (isset($_POST['login'])) {
     // print_r($_POST);
-    $frm_data = filter($_POST);
+    $frm_data = filteration($_POST);
     $query = "SELECT * FROM `customer` WHERE `email` = ? AND `password` = ?";
     $values = [$frm_data['email'], $frm_data['password']];
     $res = select($query, $values, "ss");

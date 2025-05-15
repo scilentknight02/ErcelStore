@@ -97,12 +97,12 @@
 
 <body>
   <?php
-  require('Includes\header.php');
+  session_start();
+  require('Includes/header.php');
+  if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] === true)) {
+    redirect('customer_dashboard.php');
+  }
   ?>
-
-
-  <!-- main content start -->
-
   <!-- Carousel start -->
   <div class="container px-4">
     <div class="swiper mySwiper">
@@ -182,9 +182,10 @@
             </div>
 
             <!-- Submit Button -->
+
             <div class="col-lg-1 mt-3">
               <button type="submit" name="buy" class="btn text-white shadow-none custom-bg">
-                <a href="checkout.php" class="text-decoration-none text-black">Buy</a>
+                <a href="login.php" class="text-decoration-none text-black">Buy</a>
               </button>
             </div>
           </div>
@@ -330,18 +331,12 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <a href="#"><button type="button" class="btn btn-primary btn-sm mt-2">
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-apple"> Buy</i>
                 </button></a>
-              <a href="cart.html">
-                <button type="button" class="btn btn-primary btn-sm mt-2" onclick='addToCart({
-    name: "Macbook Pro 14\"",
-    price: 1999,
-    image: "Images/Products-Img/Macbook-Pro.jpg"
-  })'>
-                  <i class="bi bi-cart-plus"></i> Cart
-                </button>
-              </a>
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
+                  <i class="bi bi-cart-plus"> Cart</i>
+                </button></a>
             </div>
           </div>
         </div>
@@ -373,18 +368,12 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <a href="#"><button type="button" class="btn btn-primary btn-sm mt-2">
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-apple"> Buy</i>
                 </button></a>
-              <a href="cart.html">
-                <button type="button" class="btn btn-primary btn-sm mt-2" onclick='addToCart({
-    name: "Macbook Pro 14\"",
-    price: 2399,
-    image: "Images/Products-Img/Macbook-Pro.jpg"
-  })'>
-                  <i class="bi bi-cart-plus"></i> Cart
-                </button>
-              </a>
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
+                  <i class="bi bi-cart-plus"> Cart</i>
+                </button></a>
             </div>
           </div>
         </div>
@@ -416,10 +405,10 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <a href="#"><button type="button" class="btn btn-primary btn-sm mt-2">
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-apple"> Buy</i>
                 </button></a>
-              <a href="cart.html">
+              <a href="login.php">
                 <button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-cart-plus"></i> Cart
                 </button>
@@ -455,10 +444,10 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <a href="#"><button type="button" class="btn btn-primary btn-sm mt-2">
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-apple"> Buy</i>
                 </button></a>
-              <a href="cart.html">
+              <a href="login.php">
                 <button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-cart-plus"></i> Cart
                 </button>
@@ -494,10 +483,10 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <a href="#"><button type="button" class="btn btn-primary btn-sm mt-2">
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-apple"> Buy</i>
                 </button></a>
-              <a href="cart.html">
+              <a href="login.php">
                 <button type="button" class="btn btn-primary btn-sm mt-2">
                   <i class="bi bi-cart-plus"></i> Cart
                 </button>
@@ -533,16 +522,13 @@
               <i class="bi bi-apple"> Apple Intelligence<sup>∆</sup></i>
             </div>
             <div class="button d-flex justify-content-between">
-              <button type="button" class="btn btn-primary btn-sm mt-2" onclick='addToCart({
-                name: "Macbook Air 13\"",
-                price: 1399,
-                image: "Images/Products-Img/Macbook-Pro.jpg"
-              })'>
-                <i class="bi bi-cart-plus"></i> Add to Cart
-              </button>
-
-              <a href="cart.html" class="btn btn-primary btn-sm mt-2">
-                <i class="bi bi-cart-plus"></i> View Cart
+              <a href="login.php"><button type="button" class="btn btn-primary btn-sm mt-2">
+                  <i class="bi bi-apple"> Buy</i>
+                </button></a>
+              <a href="login.php">
+                <button type="button" class="btn btn-primary btn-sm mt-2">
+                  <i class="bi bi-cart-plus"></i> Cart
+                </button>
               </a>
             </div>
           </div>
@@ -607,7 +593,7 @@
     <div class="swiper swiper-testimonials">
       <div class="swiper-wrapper mb-5">
         <div class="swiper-slide bg-light p-4">
-          <div class="profile d-flex align-item-center mb-3">
+          <div class="profile d-flex align-items-center mb-3">
             <img src="Images/Features/star.png" width="30px" />
             <h6 class="m-0 ms-2">Random Customer1</h6>
           </div>
@@ -696,72 +682,77 @@
 
   <!-- About Us End -->
 
-  <!-- contact us start -->
+  <!-- contact us or Reach us start -->
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Reach Us</h2>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-light rounded">
-        <iframe class="w-100 rounded" height="320px"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14133.192431325024!2d85.33402185187914!3d27.677179769194222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f2804a02bf%3A0x85468199859b2d8d!2sKoteshwor%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1745927344874!5m2!1sen!2snp"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="w-100 rounded" height="320px" src="<?php echo $contact_r['iframe']; ?>" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="bg-light p-4 rounded mb-3">
           <h5>Call us</h5>
           <a href="tel:+9779861252006" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +9779861252006
+            <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['pn1']; ?>
           </a>
           <br />
-          <a href="tel:+9779805143919" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +9779805143919
-          </a>
+
+          <?php
+          if ($contact_r['pn2'] != '') {
+            $pn2 = $contact_r['pn2'];
+            echo <<<data
+             <a href="+$pn2" class="d-inline-block mb-2 text-decoration-none text-dark">
+             <i class="bi bi-telephone-fill"></i> +$pn2
+             </a>
+          data;
+          }
+          ?>
         </div>
         <div class="bg-light p-4 rounded">
           <h5>Follow us</h5>
-          <a href="#" class="d-inline-block mb-2">
+          <a href="<?php echo $contact_r['fb']; ?>" class="d-inline-block mb-2" target="_blank">
             <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-twitter me-1"></i> Twitter
+              <i class="bi bi-facebook me-1"></i>Facebook
             </span>
           </a>
           <br />
-          <a href="#" class="d-inline-block mb-2">
+          <a href="<?php echo $contact_r['insta']; ?>" class="d-inline-block" target="_blank">
             <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-facebook me-1"></i> Facebook
+              <i class="bi bi-instagram me-1"></i>Instagram
             </span>
           </a>
-          <br />
-          <a href="#" class="d-inline-block">
-            <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-instagram me-1"></i> Instagram
-            </span>
-          </a>
+          <br>
+          <?php
+          if ($contact_r['tw'] != '') {
+            $tw = $contact_r['tw'];
+            echo <<<data
+            <a href="$tw" class="d-inline-block mb-2" target="_blank">
+              <span class="badge bg-light text-dark fs-6 p-2">
+                <i class="bi bi-twitter me-1"></i>Twitter
+              </span>
+            </a>
+          data;
+          }
+          ?>
         </div>
       </div>
     </div>
   </div>
   <!-- contact us end -->
 
-  <!-- main content end -->
   <?php
   require('Includes\footer.php');
   ?>
 
-
-
-  <!-- swiperjs script cdn start -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- swiperjs script cdn end -->
-
-  <!-- Initialize Swiper -->
   <script>
     // testimonial swiper
     var swiper = new Swiper(".swiper-testimonials", {
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
-      slidesPerView: "auto",
-      slidesPerView: "3",
       loop: true,
+      slidesPerView: 3,
       coverflowEffect: {
         rotate: 50,
         stretch: 0,
@@ -827,6 +818,9 @@
   </script>
   <script src="Scripts/registerScript.js"></script>
   <script src="Scripts/passShowHide.js"></script>
+  <!-- swiperjs script cdn start -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- swiperjs script cdn end -->
 </body>
 
 </html>

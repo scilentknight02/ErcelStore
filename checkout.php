@@ -76,7 +76,6 @@
   </div>
 
   <script>
-    // Sample cart (ideally passed from localStorage or backend)
     const cart = [
       {
         title: 'Macbook Pro 14"',
