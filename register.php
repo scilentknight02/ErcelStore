@@ -125,7 +125,6 @@ require('Includes/header.php');
       // // Hash the password before inserting it into the database
       // $hashed_password = password_hash($password, PASSWORD_BCRYPT);
   
-      // Insert the data into the database with the hashed password
       $sql = "INSERT INTO customer (first_name, last_name, email, phone, gender, date_of_birth, password) 
                     VALUES ('$fname', '$lname', '$email', '$phone', '$gender', '$dob', '$password')";
       $result = mysqli_query($con, $sql);
@@ -137,7 +136,7 @@ require('Includes/header.php');
                 </script>";
         exit();
       } else {
-        echo "<script>alert('Data insertion failed: " . mysqli_error($conn) . "');</script>";
+        echo "<script>alert('Data insertion failed: " . mysqli_error($con) . "');</script>";
       }
     }
   }

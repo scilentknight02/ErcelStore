@@ -2,11 +2,11 @@
 require('AdminPanel/inc/dbconfig.php');
 require('AdminPanel/inc/essentials.php');
 
+// fetch contact details
 $contact_q = "SELECT * FROM `contact_details` WHERE `sn` = ?";
 $value = [1];
 $contact_r = mysqli_fetch_assoc(select($contact_q, $value, 'i'));
 ?>
-<!-- fetch contact details -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,6 @@ $contact_r = mysqli_fetch_assoc(select($contact_q, $value, 'i'));
       width: 100%;
     }
 
-    /* Style for the input fields */
     .form-control {
       padding-right: 40px;
     }

@@ -36,7 +36,7 @@
     }
 
     .availability-form {
-      margin-top: -50px;
+      margin-top: 20px;
       z-index: 2;
       position: relative;
     }
@@ -106,25 +106,19 @@
   <!-- Carousel start -->
   <div class="container px-4">
     <div class="swiper mySwiper">
-      <div class="swiper-wrapper mb-5">
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel1.jpg" class="w-100 carimg" ~>
-        </div>
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel2.jpg" class="w-100 carimg">
-        </div>
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel3.jpg" class="w-100 carimg">
-        </div>
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel4.jpg" class="w-100 carimg">
-        </div>
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel5.jpg" class="w-100 carimg">
-        </div>
-        <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-          <img src="Images\Carousel\carousel6.jpg" class="w-100 carimg">
-        </div>
+      <div class="swiper-wrapper">
+        <?php
+        $result = selectAll('carousel');
+        while ($row = mysqli_fetch_assoc($result)) {
+          $path = CAROUSEL_IMG_PATH;
+          echo <<<data
+           <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+          <img src="$path$row[image]" class="w-100 d-block carimg">
+          </div>
+        data;
+        }
+
+        ?>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -135,7 +129,6 @@
     Your browser does not support video tag.
   </video>
 </div> -->
-  <!-- Carousel end -->
 
   <!-- check availability form start-->
   <div class="container availability-form">
@@ -293,7 +286,6 @@
       </div>
     </div>
   </div>
-  <!-- check availability form end -->
 
   <!-- Our Products start -->
   <h2 class="mt-5 mb-4 text-center fw-bold h-font text-decoration-underline">
@@ -539,51 +531,29 @@
       </div>
     </div>
   </div>
-  <!-- Our Products end -->
 
   <!-- Our Facilities Start -->
   <h2 class="mt-5 mb-4 text-center fw-bold h-font text-decoration-underline">
     Our Facilities
   </h2>
   <div class="container">
-    <!-- First Row -->
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/fast-delivery.svg" alt="fast delivery image" width="80px"
-          class="rounded-circle" />
-        <h5 class="mt-5">Free & Fast Delivery</h5>
-      </div>
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/authentic.jpg" alt="genuine image" width="80px" class="rounded-circle" />
-        <h5 class="mt-5">100% Authentic Products</h5>
-      </div>
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/easy-return.jpg" alt="easy return image" width="80px" class="rounded-circle" />
-        <h5 class="mt-5">Easy Returns & Exchange</h5>
-      </div>
-    </div>
-
-    <!-- Second Row -->
-    <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/multiple-payment.jpg" alt="multiple payment image" width="80px"
-          class="rounded-circle" />
-        <h5 class="mt-5">Multiple Payment Options</h5>
-      </div>
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/student-discount.png" alt="student discount image" width="80px"
-          class="rounded-circle" />
-        <h5 class="mt-5">Student Discounts</h5>
-      </div>
-      <div class="col-lg-3 col-md-3 bg-white text-center rounded shadow py-4 my-3">
-        <img src="Images/Facilities-Img/student-discount.png" alt="student discount image" width="80px"
-          class="rounded-circle" />
-        <h5 class="mt-5">24/7 Support</h5>
-      </div>
+      <?php
+      $res = selectAll('facilities');
+      $path = FACILITIES_IMG_PATH;
+      while ($row = mysqli_fetch_assoc($res)) {
+        echo <<<data
+        <div class="col-lg-4 col-md-6 px-3"> <!-- Added px-3 for horizontal padding -->
+        <div class="bg-white text-center rounded shadow py-4 my-3">
+        <img src="$path$row[icon]" alt="{$row['name']} image" width="80px" class="rounded-circle" />
+        <h5 class="mt-5">{$row['name']}</h5>
+        </div>
+        </div>
+       data;
+      }
+      ?>
     </div>
   </div>
-  <!-- Our Facilities End -->
-
 
   <!-- testimonials start -->
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font text-decoration-underline">
@@ -611,7 +581,7 @@
           </div>
         </div>
         <div class="swiper-slide bg-light p-4">
-          <div class="profile d-flex align-item-center mb-3">
+          <div class="profile d-flex align-items-center mb-3">
             <img src="Images/Features/star.png" width="30px" />
             <h6 class="m-0 ms-2">Random Customer2</h6>
           </div>
@@ -629,9 +599,45 @@
           </div>
         </div>
         <div class="swiper-slide bg-light p-4">
-          <div class="profile d-flex align-item-center mb-3">
+          <div class="profile d-flex align-items-center mb-3">
             <img src="Images/Features/star.png" width="30px" />
             <h6 class="m-0 ms-2">Random Customer3</h6>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et magni
+            praesentium, similique molestiae iusto ducimus culpa maxime dicta
+            in deserunt!
+          </p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </div>
+        </div>
+        <div class="swiper-slide bg-light p-4">
+          <div class="profile d-flex align-items-center mb-3">
+            <img src="Images/Features/star.png" width="30px" />
+            <h6 class="m-0 ms-2">Random Customer4</h6>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et magni
+            praesentium, similique molestiae iusto ducimus culpa maxime dicta
+            in deserunt!
+          </p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </div>
+        </div>
+        <div class="swiper-slide bg-light p-4">
+          <div class="profile d-flex align-items-center mb-3">
+            <img src="Images/Features/star.png" width="30px" />
+            <h6 class="m-0 ms-2">Random Customer5</h6>
           </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et magni
@@ -653,7 +659,6 @@
       <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Know More >>></a>
     </div>
   </div>
-  <!-- testimonials end -->
 
   <!-- About Us Start -->
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">About Us</h2>
@@ -675,12 +680,19 @@
         </p>
       </div>
       <div class="col-lg-4 col-md-4">
-        <img src="Images/About-Img/ercelstore.jpg" alt="Apple Products" class="img-fluid rounded" />
+        <?php
+        $store_r = selectAll('store');
+        $path = STORE_IMG_PATH;
+        while ($row = mysqli_fetch_assoc($store_r)) {
+          echo <<<data
+          <img src="$path$row[store_image]" alt="Apple Store" class="w-100 rounded">
+          data;
+        }
+        ?>
       </div>
     </div>
   </div>
 
-  <!-- About Us End -->
 
   <!-- contact us or Reach us start -->
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Reach Us</h2>
@@ -739,14 +751,14 @@
       </div>
     </div>
   </div>
-  <!-- contact us end -->
 
   <?php
   require('Includes\footer.php');
   ?>
 
+  <!-- Testimonial swiper js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    // testimonial swiper
     var swiper = new Swiper(".swiper-testimonials", {
       effect: "coverflow",
       grabCursor: true,
@@ -762,12 +774,10 @@
       },
       pagination: {
         el: ".swiper-pagination",
+        clickable: true,
       },
       breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
-        640: {
+        0: {
           slidesPerView: 1,
         },
         768: {
@@ -780,47 +790,21 @@
     });
   </script>
 
-  <!-- script to find login modal -->
-  <script>
-    window.onload = function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const loginModal = urlParams.get("loginModal");
 
-      if (loginModal === "true") {
-        // Trigger your login modal opening
-        // Example if you are using Bootstrap Modal:
-        var myModal = new bootstrap.Modal(
-          document.getElementById("loginModal")
-        );
-        myModal.show();
-      }
-    };
-  </script>
-  <!-- cart js file -->
-  <script>
-    function addToCart(product) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(product);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      window.location.href = "cart.html"; // Redirect after adding
-    }
-  </script>
+  <!-- Carausel swiper js cdn -->
 
-  <!-- for carousel -->
   <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper(".mySwiper", {
       loop: true,
       pagination: {
         el: ".swiper-pagination",
+        clickable: true,
       },
     });
   </script>
   <script src="Scripts/registerScript.js"></script>
   <script src="Scripts/passShowHide.js"></script>
-  <!-- swiperjs script cdn start -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- swiperjs script cdn end -->
 </body>
 
 </html>

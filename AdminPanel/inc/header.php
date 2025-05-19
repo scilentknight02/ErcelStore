@@ -1,6 +1,6 @@
 <div class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between sticky-top">
   <h3 class="mb-0 h-font">ERCEL STORE</h3>
-  <a class="btn btn-light btn-sm" href="logout.php">Log Out</a>
+  <a class="btn btn-outline-danger btn-sm" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i> Log Out</a>
 </div>
 <div class="col-lg-2 bg-dark border-top border-3 border-secondary" id=dashboard-menu>
   <nav class="navbar navbar-expand-lg navbar-dark">
@@ -17,13 +17,19 @@
             <a class="nav-link text-white" href="admin_dashboard.php">Dashboard</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link text-white" href="features_facilities.php">Features & Facilities</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link text-white" href="products.php">Manage Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="customers.php">Manage Customers</a>
+            <a class="nav-link text-white" href="carousel.php">Carousel</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="payment.php">Manage Payment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="user_queries.php">User Quiries</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="settings.php">Settings</a>

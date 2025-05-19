@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 require('Includes/header.php');
 
 if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] === true)) {
   redirect('customer_dashboard.php');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +29,7 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] === true)) 
 </head>
 
 <body>
+
   <!-- Modal Login -->
 
   <div class="login-form text-center rounded bg-white shadow overflow-hidden">
@@ -70,7 +69,7 @@ if ((isset($_SESSION['customerlogin']) && $_SESSION['customerlogin'] === true)) 
       $_SESSION['cid'] = $row['id'];
       redirect('customer_dashboard.php');
     } else {
-      alert('error', 'Login failed - Invalid Crediantials');
+      alert("error", "Login Failed - Invalid Credentials!");
     }
   }
   ?>

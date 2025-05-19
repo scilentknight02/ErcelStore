@@ -45,42 +45,55 @@
   <div class="container">
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-        <h3 class="mb-3">Lorem ipsum dolor sit.</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab repellat ut beatae maxime amet? Nobis dolores,
-          veritatis maxime soluta quas eveniet porro aspernatur doloribus voluptatem rerum magnam velit nihil
-          asperiores, iste, sapiente totam quo? Temporibus maiores rem laboriosam ducimus deserunt.</p>
+        <h3 class="mb-3">Why Ercel Store</h3>
+        <p class="about-text">
+          ~Welcome to <span class="fs-5 text-dark fw-bold">ErcelStore</span>,
+          your premium destination for all Apple products in Kathmandu, Nepal.
+          Whether you're looking for the latest iPhone, a new MacBook, iPad,
+          or iMac, we offer top-tier Apple products with the best customer
+          service in town.
+        </p>
+        <p class="about-text">
+          Our store is committed to delivering the best Apple experience. We
+          aim to provide our customers with cutting-edge products, competitive
+          pricing, and quick delivery services to ensure that your experience
+          with us is seamless and satisfying.
+        </p>
       </div>
-      <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">
-        <img src="Images/About-Img/ercelstore.jpg" alt="Apple Store" class="w-100 rounded">
-      </div>
+
+      <?php
+      $store_r = selectAll('store');
+      $path = STORE_IMG_PATH;
+      while ($row = mysqli_fetch_assoc($store_r)) {
+        echo <<<data
+           <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">
+          <img src="$path$row[store_image]" alt="Apple Store" class="w-100 rounded">
+          <h5 class="mt-2 d-flex justify-content-center">$row[store_name]</h5>
+          </div>
+        data;
+      }
+      ?>
     </div>
   </div>
   <div class="container mt-5">
+    <h3 class="my-5 fw-bold h-font text-center">Choose Us</h3>
     <div class="row">
-      <div class="col-lg-3 col-md-6 mb-4 px-4">
-        <div class="bg-white rounded shadow p-4 border-top border-4 text-center border-dark box">
-          <img src="Images/About-Img/products.png" alt="Appple Store" width="70px" class="rounded">
-          <h4 class="mt-3">20+ Products</h4>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 px-4">
-        <div class="bg-white rounded shadow p-4 border-top border-4 text-center border-dark box">
-          <img src="Images/About-Img/customers.png" alt="Appple Store" width="70px" class="rounded">
-          <h4 class="mt-3">1000+ Customers</h4>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 px-4">
-        <div class="bg-white rounded shadow p-4 border-top border-4 text-center border-dark box">
-          <img src="Images/About-Img/rating.png" alt="Appple Store" width="70px" class="rounded">
-          <h4 class="mt-3">4.5+ Rating</h4>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 px-4">
-        <div class="bg-white rounded shadow p-4 border-top border-4 text-center border-dark box">
-          <img src="Images/About-Img/store-open.png" alt="Appple Store" width="70px" class="rounded">
-          <h4 class="mt-3">Store Open</h4>
-        </div>
-      </div>
+
+      <?php
+      $chooseus_r = selectAll('chooseus');
+      $path = CHOOSEUS_IMG_PATH;
+      while ($row = mysqli_fetch_assoc($chooseus_r)) {
+        echo <<<data
+          <div class="col-lg-3 col-md-6 mb-4 px-4">
+          <div class="bg-white rounded shadow p-4 border-top border-4 text-center border-dark box">
+          <img src="$path$row[chooseus_image]" alt="Appple Store" width="70px" class="rounded">
+          <h4 class="mt-3">$row[chooseus_name]</h4>
+          </div>
+          </div>
+         data;
+      }
+      ?>
+
     </div>
   </div>
   <h3 class="my-5 fw-bold h-font text-center">Support Team</h3>

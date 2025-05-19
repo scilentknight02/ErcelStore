@@ -24,17 +24,6 @@
   border-color: var(--teal_hover);
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
 .custom-alert {
   position: fixed;
   top: 80px;
@@ -45,6 +34,27 @@ input[type="number"] {
   position: fixed;
   height: 100%;
   z-index: 11;
+}
+
+/* for scrollbar css */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(36, 36, 36);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media screen and (max-width: 991px) {

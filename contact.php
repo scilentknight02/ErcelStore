@@ -102,7 +102,7 @@
               <label class="form-label" style="font-weight: 500">Message</label>
               <textarea class="form-control shadow-none" rows="5" name="message" style="resize: none"></textarea>
             </div>
-            <button type="submit" name="btn_submit" class="btn text-white custom-bg mt-3">
+            <button type="submit" name="send" class="btn text-white custom-bg mt-3">
               Submit
             </button>
           </form>
@@ -112,25 +112,16 @@
   </div>
 
   <?php
-  if (isset($_POST['btn_submit'])) {
+  if (isset($_POST['send'])) {
     // print_r($_POST);
     $frm_data = filteration($_POST);
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-    $query = "INSERT INTO `inquery`(`name`, `email`, `subject`, `message`) VALUES ('$name', '$email', '$subject', '$message')";
-    $result = mysqli_query($con, $query);
-    if ($result) {
-      echo "<script>
-                    alert('Message sent successfully.');
-                    window.location.href='contact.php';
-                </script>";
+    $query = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?,?,?,?)";
+    $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+    $result = insert($query, $values, 'ssss');
+    if ($result == 1) {
+      alert('success', 'Message send!');
     } else {
-      echo "<script>
-                    alert('Something went wrong. Please try again.');
-                    window.location.href='contact.php';
-                </script>";
+      alert('error', 'Server Down! Try again later.');
     }
   }
   ?>

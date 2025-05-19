@@ -3,11 +3,19 @@
 // frontend process data
 define('SITE_URL', 'http://localhost:8000/');
 define('ABOUT_IMG_PATH', SITE_URL . 'Images/About-Img/');
+define('CAROUSEL_IMG_PATH', SITE_URL . 'Images/Carousel/');
+define('STORE_IMG_PATH', SITE_URL . 'Images/Store/');
+define('CHOOSEUS_IMG_PATH', SITE_URL . 'Images/Chooseus/');
+define('FACILITIES_IMG_PATH', SITE_URL . 'Images/Facilities-Img/');
 
 
 // backend upload process need this data
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Images/');
 define('ABOUT_FOLDER', 'About-Img/');
+define('CAROUSEL_FOLDER', 'Carousel/');
+define('STORE_FOLDER', 'Store/');
+define('CHOOSEUS_FOLDER', 'Chooseus/');
+define('FACILITIES_FOLDER', 'Facilities-Img/');
 
 function adminLogin()
 {
@@ -50,11 +58,12 @@ function alert($type, $msg)
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     alert;
+
 }
 
 function uploadImage($image, $folder)
 {
-    $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
+    $valid_mime = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
     $img_mime = $image['type'];
 
     if (!in_array($img_mime, $valid_mime)) {
@@ -91,4 +100,33 @@ function deleteImage($image, $folder)
     }
 }
 
+function uploadSvgImage($image, $folder)
+{
+    $valid_mime = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // invalid image or format
+    }
+
+    if ($image['size'] / (1024 * 1024) > 1) {
+        return 'inv_size'; // invalid size greater than 1MB
+    }
+
+    $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+    $rname = 'IMG_' . random_int(11111, 99999) . ".$ext";
+    $upload_folder = UPLOAD_IMAGE_PATH . $folder;
+
+    if (!is_dir($upload_folder)) {
+        mkdir($upload_folder, 0777, true);
+    }
+
+    $img_path = $upload_folder . $rname;
+
+    if (move_uploaded_file($image["tmp_name"], $img_path)) {
+        return $rname;
+    } else {
+        return "upload_failed";
+    }
+}
 ?>

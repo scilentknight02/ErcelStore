@@ -112,24 +112,4 @@ if (isset($_POST['remove_member'])) {
     }
 }
 
-
-
-
-// // for products fetch 
-// if (isset($_POST['get_products'])) {
-//     $query = "SELECT * FROM products"; // Adjust table name/columns if needed
-//     $result = mysqli_query($con, $query);
-
-//     $products = [];
-
-//     if ($result && mysqli_num_rows($result) > 0) {
-//         while ($row = mysqli_fetch_assoc($result)) {
-//             $products[] = $row;
-//         }
-//     }
-
-//     echo json_encode($products);
-// }
-
-
 ?>
